@@ -1,6 +1,6 @@
 # Performance Testing React App
 
-This project is a React + TypeScript application bootstrapped with [Vite](https://vitejs.dev/). It features modular architecture, authentication, user management, and a performant virtualized list UI.
+This project is a React + TypeScript application bootstrapped with [Vite](https://vitejs.dev/). It features modular architecture, authentication, user management, and a performant virtualized list UI. Additionally, the project uses [pnpm](https://pnpm.io/) for package management.
 
 ---
 
@@ -9,28 +9,32 @@ This project is a React + TypeScript application bootstrapped with [Vite](https:
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) (v18 or higher recommended)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [npm](https://www.npmjs.com/), [yarn](https://yarnpkg.com/), or [pnpm](https://pnpm.io/)
 
 ### Installation
 
 1. **Clone the repository:**
-   ```sh
-   git clone <your-repo-url>
-   cd performace-testing
-   ```
+  ```sh
+  git clone <your-repo-url>
+  cd performace-testing
+  ```
 
 2. **Install dependencies:**
-   ```sh
-   npm install
-   # or
-   yarn install
-   ```
+  ```sh
+  pnpm install
+  # or
+  npm install
+  # or
+  yarn install
+  ```
 
 ### Running the Development Server
 
 Start the app in development mode with hot module replacement:
 
 ```sh
+pnpm run dev
+# or
 npm run dev
 # or
 yarn dev
@@ -43,6 +47,8 @@ The app will be available at [http://localhost:5173](http://localhost:5173) by d
 To build the app for production:
 
 ```sh
+pnpm run build
+# or
 npm run build
 # or
 yarn build
@@ -55,6 +61,8 @@ The output will be in the `dist/` directory.
 You can preview the production build locally:
 
 ```sh
+pnpm run preview
+# or
 npm run preview
 # or
 yarn preview
@@ -68,15 +76,15 @@ yarn preview
 src/
   assets/           # Static assets (e.g., images, SVGs)
   core/
-    hooks/          # Reusable React hooks
-    http/           # HTTP client setup (Axios)
-    layouts/        # Layout components (e.g., MainLayout)
-    routes/         # Route protection and navigation
-    types/          # Shared TypeScript types
-    ui/             # UI components (Sidebar, TopBar, Virtualizer, etc.)
+   hooks/          # Reusable React hooks
+   http/           # HTTP client setup (Axios)
+   layouts/        # Layout components (e.g., MainLayout)
+   routes/         # Route protection and navigation
+   types/          # Shared TypeScript types
+   ui/             # UI components (Sidebar, TopBar, Virtualizer, etc.)
   features/
-    auth/           # Authentication logic, hooks, and components
-    users/          # User management, components, and hooks
+   auth/           # Authentication logic, hooks, and components
+   users/          # User management, components, and hooks
   index.css         # Global styles (TailwindCSS)
   main.tsx          # App entry point and router setup
   vite-env.d.ts     # Vite/TypeScript environment types
@@ -113,9 +121,9 @@ You can see an example usage in [`src/features/users/users.tsx`](src/features/us
 ```tsx
 <Virtualizer rowHeight={80}>
   {data?.map((item, index) => (
-    <li key={index}>
-      <UserCard item={item} />
-    </li>
+   <li key={index}>
+    <UserCard item={item} />
+   </li>
   ))}
 </Virtualizer>
 ```
@@ -135,6 +143,8 @@ If you need to configure environment variables, create a `.env` file in the root
 This project uses ESLint for code linting. To run the linter:
 
 ```sh
+pnpm run lint
+# or
 npm run lint
 # or
 yarn lint
@@ -149,3 +159,4 @@ You can expand the ESLint configuration for stricter or more type-aware rules as
 - **Sidebar:** Edit `src/core/ui/sidebar/use-sidebar.ts` and `src/core/layouts/main-layout.tsx` to customize navigation items.
 - **API Integration:** Update `src/core/http/index.ts` for your backend API.
 - **User Features:** Extend user management in `src/features/users/`.
+
