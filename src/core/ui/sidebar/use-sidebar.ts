@@ -1,6 +1,7 @@
+import { useIsMobile } from '@/core/hooks/use-is-mobile';
 import type React from 'react';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export interface SidebarItem {
   id: string;
@@ -11,13 +12,20 @@ export interface SidebarItem {
 }
 
 export function useSidebar() {
-  const [isOpen, setIsOpen] = useState(true);
+  const isMobile = useIsMobile();
+  const [isOpen, setIsOpen] = useState(!isMobile);
   const [expandedItems, setExpandedItems] = useState<string[]>(['users']);
   const [activeItem, setActiveItem] = useState('dashboard');
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    if (isMobile) {
+      setIsOpen(false);
+    }
+  }, [isMobile]);
 
   const toggleExpanded = (itemId: string) => {
     setExpandedItems((prev) =>

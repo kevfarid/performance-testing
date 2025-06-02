@@ -1,13 +1,13 @@
 import { useState, useCallback, useEffect } from 'react';
 import type User from '../types/user';
-import { getList } from '../services/users';
+import { getUsers } from '../services/users';
 
 export default function useUsersData() {
   const [data, setData] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   const getData = useCallback(() => {
-    getList()
+    getUsers()
       .then((response) => {
         setData(response);
       })

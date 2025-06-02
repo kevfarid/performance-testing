@@ -3,24 +3,19 @@ import { useSidebar, type SidebarItem } from '../ui/sidebar/use-sidebar';
 import Sidebar from '../ui/sidebar/sidebar';
 import TopBar from '../ui/top-bar';
 
-import { User } from 'lucide-react';
 import { useAuth } from '@/features/auth/hooks/use-auth';
-
-export const sidebarItems: SidebarItem[] = [
-  {
-    id: 'users',
-    label: 'Users',
-    icon: User,
-    href: '/users',
-  },
-];
 
 interface SidebarLayoutProps {
   children: React.ReactNode;
   title?: string;
+  items?: SidebarItem[];
 }
 
-export default function MainLayout({ children, title }: SidebarLayoutProps) {
+export default function MainLayout({
+  children,
+  title,
+  items = [],
+}: SidebarLayoutProps) {
   const { isOpen, expandedItems, activeItem, toggleSidebar, handleItemClick } =
     useSidebar();
 
@@ -31,7 +26,7 @@ export default function MainLayout({ children, title }: SidebarLayoutProps) {
       <Sidebar
         user={user}
         isOpen={isOpen}
-        items={sidebarItems}
+        items={items}
         expandedItems={expandedItems}
         activeItem={activeItem}
         onToggle={toggleSidebar}

@@ -7,6 +7,7 @@ import { AuthProvider } from './features/auth/provider/auth-provider';
 import ProtectedRoute from './core/routes/protected-router';
 import MainLayout from './core/layouts/main-layout';
 import Users from './features/users/users';
+import sidebarItems from './core/constants/sidebar-items';
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: (
-      <MainLayout>
+      <MainLayout items={sidebarItems}>
         <ProtectedRoute />
       </MainLayout>
     ),
